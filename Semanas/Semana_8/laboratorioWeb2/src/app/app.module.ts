@@ -8,6 +8,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { MenuComponent } from './shared/components/menu/menu.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { SeguridadesModule } from './pages/seguridades/seguridades.module';
+import { LoginComponent } from './pages/seguridades/login/login.component';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, MenuComponent, FooterComponent],
