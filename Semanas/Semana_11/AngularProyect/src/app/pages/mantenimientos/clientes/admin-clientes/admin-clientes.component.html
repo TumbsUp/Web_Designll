@@ -1,0 +1,39 @@
+<p class="titulo">{{ titulo }}</p>
+
+<form [formGroup]="personaForm.baseForm">
+<mat-form-field>
+  <mat-label>Cedula</mat-label>
+  <input matInput formControlName="cedula" [readonly]="!isCreate" />
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Nombre</mat-label>
+  <input matInput formControlName="nombre" />
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>apellido1</mat-label>
+  <input matInput formControlName="apellido1" />
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>apellido2</mat-label>
+  <input matInput formControlName="apellido2" />
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Fecha de Nacimiento</mat-label>
+  <input type="date" matInput formControlName="fechaNacimiento" />
+</mat-form-field>
+</form>
+
+<form [formGroup]="clienteForm.baseForm">
+  <mat-form-field>
+    <mat-label>TipoCliente</mat-label>
+    <input matInput formControlName="Tipocliente" />
+  </mat-form-field>
+</form>
+
+<div>
+  <button mat-button color="primary" (click)="guardar()">Guardar</button>
+</div>
