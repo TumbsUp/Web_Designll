@@ -1,0 +1,22 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  ul{
+    margin: 0px;
+  }
+  ul>li>a{
+    text-decoration: none;
+  
+  }
+  ul>li>a:hover{
+    color: black;
+    text-decoration: solid;
+  
+  }
+  
+  ul>li{
+  list-style: none;
+  display: inline-block;
+  padding: 5px 10px;
+  }

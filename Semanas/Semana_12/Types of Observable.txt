@@ -1,0 +1,131 @@
+Tipos de Observables
+
+-Observables: Es el tipo base de todos los observables. Puede emitir valores, errores y notificaciones de finalización.
+
+-Subject: Es un tipo de observable que puede emitir  valores a múltiples suscriptores.
+
+-ReplaySubject: Es un tipo de subject que almacena los últimos valores emitidos y los emite a los nuevos suscriptores.
+
+-BehaviorSubject: Es un tipo de subject que emite el valor más reciente emitido o el valor inicial cuando un nuevo suscriptor se suscribe.
+
+-MulticastSubject: Es un tipo de subject que puede emitir valoresa múltiples suscriptores, pero no almacena los valores emitidos.
+
+-ConnectableObservable: Es un tipo de observable que no puede ser suscrito hasta que se conecte.
+
+
+================================================================================================================================================
+Observable:
+import 'rxjs/Rx';
+
+// Create an observable that emits the numbers from 1 to 10
+const observable = from(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+// Subscribe to the observable and print the emitted values
+observable.subscribe(value => {
+  console.log(value);
+});
+
+Observable: El ejemplo de código para el observable crea un observable que emite los números del 1 al 10. El suscriptor se suscribe al observable y el código imprimirá los valores emitidos.
+======================================================================================================================================================
+Subject:
+import 'rxjs/Rx';
+
+// Create a subject that can emit values to multiple subscribers
+const subject = new Subject();
+
+// Emit a value to the subject
+subject.next(1);
+
+// Subscribe to the subject and print the emitted values
+subject.subscribe(value => {
+  console.log(value);
+});
+
+// Emit another value to the subject
+subject.next(2);
+Subject: El ejemplo de código para el subject crea un subject que puede emitir valores a múltiples suscriptores. El subject emite un valor, 1, y luego se suscribe al subject. El código imprimirá el valor emitido. El subject emite otro valor, 2, y el código imprimirá el valor emitido.
+==============================================================================================================
+ReplaySubject:
+import 'rxjs/Rx';
+
+// Create a replay subject that stores the last 10 emitted values
+const replaySubject = new ReplaySubject(10);
+
+// Emit a value to the subject
+replaySubject.next(1);
+
+// Subscribe to the subject and print the emitted values
+replaySubject.subscribe(value => {
+console.log(value);
+});
+
+// Emit another value to the subject
+replaySubject.next(2);
+
+// The subscriber will print both 1 and 2, even though it subscribed after the second value was emitted
+
+ReplaySubject: El ejemplo de código para el replay subject crea un replay subject que almacena los últimos 10 valores emitidos. El subject emite un valor, 1, y luego se suscribe al subject. El código imprimirá el valor emitido. El subject emite otro valor, 2, y el código imprimirá ambos valores emitidos
+================================================================================================================
+BehaviorSubject:
+import 'rxjs/Rx';
+
+// Create a behavior subject that emits the most recent emitted value or the initial value
+const behaviorSubject = new BehaviorSubject(1);
+
+// Subscribe to the subject and print the emitted values
+behaviorSubject.subscribe(value => {
+  console.log(value);
+});
+
+// Emit a value to the subject
+behaviorSubject.next(2);
+
+// The subscriber will print 2, even though it subscribed after the second value was emitted
+
+BehaviorSubject: El ejemplo de código para el behavior subject crea un behavior subject que emite el valor más reciente emitido o el valor inicial. El subject emite un valor, 1, y luego se suscribe al subject. El código imprimirá el valor emitido. El subject emite otro valor, 2, y el código imprimirá el valor 2, incluso si se suscribe después de que se emita el segundo valor.
+=================================================================================================================
+MulticastSubject:
+import 'rxjs/Rx';
+
+// Create a multicast subject that can emit values to multiple subscribers, but does not store the emitted values
+const multicastSubject = new MulticastSubject();
+
+// Emit a value to the subject
+multicastSubject.next(1);
+
+// Subscribe to the subject and print the emitted values
+multicastSubject.subscribe(value => {
+console.log(value);
+});
+
+// Subscribe to the subject again and print the emitted values
+multicastSubject.subscribe(value => {
+console.log(value);
+});
+
+// The subscribers will both print 1, even though it was only emitted once
+
+MulticastSubject: El ejemplo de código para el multicast subject crea un multicast subject que puede emitir valores a múltiples suscriptores, pero no almacena los valores emitidos. El subject emite un valor, 1, y luego se suscribe al subject dos veces. El código imprimirá el valor emitido dos veces.
+====================================================================================================================
+ConnectableObservable:
+import 'rxjs/Rx';
+
+// Create a connectable observable that cannot be subscribed to until it is connected
+const connectableObservable = new ConnectableObservable();
+
+// Emit a value to the subject
+connectableObservable.next(1);
+
+// Subscribe to the subject and print the emitted values
+connectableObservable.subscribe(value => {
+  console.log(value);
+});
+
+// The subscriber will not print anything, because the observable is not connected
+
+// Connect the observable
+connectableObservable.connect();
+
+// The subscriber will now print 1
+
+ConnectableObservable: El ejemplo de código para el connectable observable crea un connectable observable que no puede ser suscrito hasta que se conecte. El subject emite un valor, 1, y luego se suscribe al subject. El código no imprimirá nada, porque el observable no está conectado. El observable se conecta y el código imprimirá el valor emitido.
